@@ -1,4 +1,57 @@
 #homepage {
+  overflow: hidden;
+
+  .float{
+    position: absolute;
+  }
+  .pin {
+    position: relative;
+  }
+  .section{
+    height: 100vh;
+  }
+  #rectangle-navy{
+    width: 30vw;
+    height: 18vw;
+    top: 12vw;
+    left: 26vw;
+    background-color: @navy;
+    z-index: 1;
+  }
+  
+  #rectangle-slate{
+    width: 30vw;
+    height: 16vw;
+    top: -10vw;
+    left: 50vw;
+    background-color: @slate;
+    z-index: 2;
+  }
+  
+  #rectangle-mustard{
+    width: 27vw;
+    height: 17vw;
+    top: -13vw;
+    left: 45vw;
+    background-color: @mustard;
+    z-index: 3;
+  }
+  #brand-wrapper {
+    position: fixed;
+    width: 100%;
+    //top:10vw;
+    //left:10vw;  
+  }
+  #brand{
+    top: 8vw;
+    left:-22vw;
+    font-size: 7vw;
+    z-index: 20;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
 
   [purpose='cloud-1'] {
     .fly-fade();
