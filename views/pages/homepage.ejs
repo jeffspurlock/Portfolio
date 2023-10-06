@@ -1,18 +1,26 @@
 <div id="homepage" v-cloak>
+  <div  id="gradient"></div>
   <div class="section">
     <div id="brand-wrapper" class="float">
       <h1 class="pin" id="brand">Axon Studios</h1>
+      
       <div class="pin" id="rectangle-navy"></div>
       <div class="pin" id="rectangle-slate"></div>
       <div class="pin" id="rectangle-mustard"></div>
     </div>
   </div>
   <div class="section">
-    <div id="skill-set">
-      <h2>What I do</h2>
-      <p>Full Stack Webdevelopment - 15 years</p>
-      <p>Shopify Development - 4 years</p>
-      <p>Full Funnel eCommerce Advertising - 10 years</p>
+    <div class="text-block" id="intro">
+      <H2>Hi,<br />I'm Jeff,<br />web developer</H2>
+    </div>
+  </div>
+  <div class="section">
+    <div class="text-block" id="skill-set">
+      <h2>What I Do</h2>
+      <p>Full Stack Webdevelopment</p>
+      <p>Shopify Development</p>
+      <p>Full Funnel eCommerce Advertisings</p>
+      <p>API Development</p>
     </div>
   </div>
 </div>
@@ -64,10 +72,10 @@
       document.getElementById("brand").style.fontSize = (nameFontEnd - nameFontInitial) * percent + nameFontInitial +"vw";
     
       if(percent == 1){
-        document.getElementById("brand").style.backgroundColor = "#FFFEF9";
+        document.getElementById("gradient").style.display = "inline";
       }
       if(percent < 1){
-        document.getElementById("brand").style.backgroundColor = "rgb(0,0,0,0)";
+        document.getElementById("gradient").style.display = "none";
       }
     });
 
