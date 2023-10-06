@@ -1,0 +1,57 @@
+<div id="weather">
+    <div id="white">
+        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+    </div>
+    <div id="grey10">
+        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+    </div>
+    <div id="grey20">
+        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+    </div>
+    <div id="grey30">
+        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+    </div>
+</div>
+<div id="widget">
+    <div class="card">
+        <h2>Current Temp</h2>
+        <div><span id="current-temp"></span>&#176;</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.addEventListener('load', loadTasks)
+    function loadTasks() {
+        getWeather();
+        //setTimeout(() => {document.getElementById("weather").style.display = "none";}, 7000);
+         
+    }
+    function getWeather(){
+        var lat = "41.258652";
+        var lon = "-95.937187";
+        var apiAddress = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=12be7f0750ce44d51d675415558fedc5";
+
+        fetch(apiAddress) 
+        .then(response => { 
+            if (response.ok) { 
+            return response.json(); // Parse the response data as JSON 
+            } else { 
+            throw new Error('API request failed'); 
+            } 
+        }) 
+        .then(data => { 
+            displayWeather(data);
+            console.log(data);
+        }) 
+        .catch(error => { 
+            // Handle any errors here 
+            console.error(error); // Example: Logging the error to the console 
+        });
+    }   
+    function displayWeather(data){
+        let currentTemp = Math.round(data.current.temp)
+        document.getElementById("current-temp").innerHTML = currentTemp;
+    }
+
+    //TODO  on scroll, dim the narquee and light up the nav bar.
+</script

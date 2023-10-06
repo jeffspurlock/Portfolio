@@ -4,6 +4,8 @@
 @slate: #EDEDE6;
 @mustard: #B7A246;
 @brown: #2E2415;
+@off-white: #FFFEF9;
+@yellow: #fbcd00;
 
 
 [v-cloak] { display: none; }
@@ -11,7 +13,6 @@
 html, body {
   //height: 100%;
   margin: 0;
-  background-color: #FFFEF9;
   font-family: 'Josefin Slab', serif;
 }
 [purpose='page-wrap'] {
@@ -42,35 +43,16 @@ html, body {
   position: absolute;
   right: 0;
 }
-.nav-link{
-  color: @brown;
-  font-size: 1.75rem;
-  display: inline-block;
-  position: relative;
-  margin: 4px;
+
+.menu-drop {
+  background-color: transparent;
+  border: none;
+}
+.dropdown-menu {
+  background-color: transparent;
+  border: none;
 }
 
-.nav-link:hover{
-  color: @navy;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  transform: scaleX(0);
-  height: 1.5px;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
-  background-color: @navy;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom center;
-}
 
 body.detected-mobile {
   // Above and beyond the media queries below, this selector (which relies on

@@ -23,14 +23,10 @@ module.exports = {
   },
 
 
-  fn: async function () {
-
-    if (this.req.me) {
-      throw {redirect:'/welcome'};
-    }
-
-    return {};
-
+  fn: async function (req, res) {
+    return{ 
+      pageName: "homepage" 
+    };
   }
 
 

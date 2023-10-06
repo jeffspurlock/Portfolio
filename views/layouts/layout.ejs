@@ -43,12 +43,19 @@
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
-  <body>
+  <body id="<%- pageName %>-page">
     <div purpose="page-wrap">
       <header class="navigation">
         <div class="left-nav">
-          <a class="nav-link" href="/homepage">home</a> 
-          <a class="nav-link" href="/fun">fun</a>
+          <a class="nav-link" href="/">home</a> 
+          <div class="nav-link dropdown">
+            <button class="menu-drop" type="button" id="dropdownFunButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              fun
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownFunButton">
+              <a class="nav-link" href="/fun/weather">weather</a>
+            </div>
+          </div>
           <a class="nav-link" href="/me">me</a>
         </div>
         <div class="right-nav">

@@ -1,0 +1,105 @@
+#weather-page {
+    background-color: black;
+
+    [purpose='page-wrap']{
+    height: 100vh !important;
+    }
+    .navigation {
+        position: relative;
+        z-index: 10;
+    }
+    .nav-link{
+        color: @off-white !important;
+        font-size: 1.75rem;
+        display: inline-block;
+        position: relative;
+        margin: 4px;
+    }
+
+    .menu-drop{
+        color: @off-white;
+    }
+
+    .menu-drop:hover{
+        color: @yellow;
+    }
+
+    .show {
+        border: none;
+    }
+    
+    .nav-link:hover{
+        color: @yellow !important;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        transform: scaleX(0);
+        height: 1.5px;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        background-color: @yellow !important;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    
+    .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom center;
+    }
+
+    #weather{
+        height: 100vh;
+        overflow:none;
+        width: 100%;
+
+        div{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 100vh;
+        font-weight: 800;
+        width: 150%;
+        position: absolute;
+        top: -10vw;
+        letter-spacing: -.25vw;
+        }
+
+        #white {
+            color: white;
+            z-index:5;
+            right:6vw;
+
+        }
+        #grey10{
+            color: #D1D3D4;
+            z-index:4;
+            right: 4vw;
+        }
+        #grey20{
+            color: #A7A9AC;
+            z-index:3;
+            right: 2vw;
+        }
+        #grey30{
+            color: #808285;
+            z-index:2;
+            right:0vw;
+        }
+    } 
+    #widget {
+        .card {
+            text-align: center;
+            background-color: transparent;
+            font-size: 9vw;
+            padding: 2vw;
+            position: fixed;
+            top: 7vw;
+            left: 5vw;
+            font-family: helvetica;
+            color: @off-white;
+            line-height: normal;
+        }
+    }  
+
+}
