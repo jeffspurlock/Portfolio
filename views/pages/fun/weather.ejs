@@ -1,57 +1,112 @@
 <div id="weather">
     <div id="white">
-        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
     </div>
     <div id="grey10">
-        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
     </div>
     <div id="grey20">
-        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
     </div>
     <div id="grey30">
-        <marquee loop="1" width="120%" scrollDelay="7" truespeed>WEATHER</marquee>
+        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
     </div>
 </div>
+    <div id="weather-2">
+        <?xml version="1.0" encoding="utf-8"?>
+    <svg version="1.1" id="weather-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 1920 400" style="enable-background:new 0 0 1920 400;" preserveAspectRatio="none" xml:space="preserve">
+    <style type="text/css">
+        .st0{fill:#FFFFFF;}
+    </style>
+    <g>
+        <g>
+            <path class="st0" d="M310.8,50.5h58.2l-77.1,273.9h-54.6l-33.1-160.2l-9.7-53l-9.7,53l-33.1,160.2H98.5L20.9,50.5h60.8l36.2,156.9
+                l7.8,43.7l8-42.7l30.8-157.8h60.4l32.5,156.9l8.4,43.7l8.4-42L310.8,50.5z"/>
+        </g>
+        <g>
+            <path class="st0" d="M594.2,204.7H461.1v70.4h151.6v49.2H405.2V50.5h200.9V99h-145v58.2h133.1V204.7z"/>
+        </g>
+        <g>
+            <path class="st0" d="M817.8,268.1H716.8l-19,56.3H638l97.8-273.9h64.7l97,273.9h-62.1L817.8,268.1z M801.8,220.9l-34.2-107.8
+                l-35.3,107.8H801.8z"/>
+        </g>
+        <g>
+            <path class="st0" d="M1103.2,50.5V99h-82v225.4h-57.6V99h-82.3V50.5H1103.2z"/>
+        </g>
+        <g>
+            <path class="st0" d="M1300,324.4V202.1h-107v122.3h-56.7V50.5h56.7v104.4h107V50.5h56.9v273.9H1300z"/>
+        </g>
+        <g>
+            <path class="st0" d="M1602.2,204.7h-133.1v70.4h151.6v49.2h-207.6V50.5h200.9V99h-145v58.2h133.1V204.7z"/>
+        </g>
+        <g>
+            <path class="st0" d="M1781.7,217h-59.1v107.4h-55.9V50.5h134.4c19.2,0.4,34,2.7,44.3,7.1c10.3,4.3,19.1,10.7,26.3,19.1
+                c5.9,6.9,10.7,14.6,14.1,23c3.5,8.4,5.2,18,5.2,28.8c0,13-3.3,25.8-9.8,38.4c-6.6,12.6-17.4,21.5-32.5,26.7
+                c12.6,5.1,21.6,12.3,26.9,21.7c5.3,9.4,7.9,23.6,7.9,42.8v18.4c0,12.5,0.5,21,1.5,25.5c1.5,7.1,5,12.3,10.4,15.6v6.9h-63
+                c-1.7-6.1-3-11-3.7-14.7c-1.5-7.7-2.3-15.5-2.4-23.6l-0.4-25.5c-0.2-17.5-3.4-29.1-9.6-34.9C1810.1,219.9,1798.6,217,1781.7,217z
+                M1816.5,167.2c11.4-5.2,17.1-15.5,17.1-30.9c0-16.6-5.5-27.8-16.5-33.5c-6.2-3.2-15.5-4.8-27.9-4.8h-66.5v73.6h64.9
+                C1800.4,171.6,1810,170.2,1816.5,167.2z"/>
+        </g>
+    </g>
+    </svg>
+</div>
 <div id="widget">
+    <h2 id="city-name"></h2>
     <div class="card">
-        <h2>Current Temp</h2>
         <div><span id="current-temp"></span>&#176;</div>
     </div>
+    <i id="weather-icon"></i>
+    <div id="elevation"></div>
+    <div id="forecast">
+        <% var i = 0;
+        while(i < 7){ %>
+            <div class="day-line" id="day-<%- i %>">
+                <div class="day" id="date-<%- i %>"></div>
+                <div class="high-low">
+                    <i class="fa-solid fa-temperature-arrow-down low"></i>
+                    <span><span id="low-<%- i %>"></span>&#176;</span>
+                </div>
+                <div class="high-low">
+                    <i class="fa-solid fa-temperature-arrow-up high"></i>
+                    <span><span id="high-<%- i %>"></span>&#176;</span>
+                </div>
+            </div>
+        <% i+=1; }%>
+    </div>
+    <div id="clock"></div>
 </div>
 
 <script type="text/javascript">
     window.addEventListener('load', loadTasks)
     function loadTasks() {
-        getWeather();
-        //setTimeout(() => {document.getElementById("weather").style.display = "none";}, 7000);
-         
+        getLocation();
+        setTimeout(function(){
+            var time = 0;
+            var repeat = setInterval(function() {
+                var per = time/100;
+                if(per < 1.01){
+                    document.getElementById("weather-2").style.opacity = 1 - per;
+                };
+                time += 2;
+            }, 10)
+        }, 3500)
+    
+        setTimeout(function(){
+            var time = 0;
+            var repeat = setInterval(function(){
+                var per = time/100;
+                if (per <1.01){ 
+                    document.getElementById("widget").style.opacity = per;
+                };
+                time += 2;
+            }, 10)
+        }, 4000)
+        startTime();
     }
-    function getWeather(){
-        var lat = "41.258652";
-        var lon = "-95.937187";
-        var apiAddress = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=12be7f0750ce44d51d675415558fedc5";
-
-        fetch(apiAddress) 
-        .then(response => { 
-            if (response.ok) { 
-            return response.json(); // Parse the response data as JSON 
-            } else { 
-            throw new Error('API request failed'); 
-            } 
-        }) 
-        .then(data => { 
-            displayWeather(data);
-            console.log(data);
-        }) 
-        .catch(error => { 
-            // Handle any errors here 
-            console.error(error); // Example: Logging the error to the console 
-        });
-    }   
-    function displayWeather(data){
-        let currentTemp = Math.round(data.current.temp)
-        document.getElementById("current-temp").innerHTML = currentTemp;
+    function updateWeather(){
+        getLocation(); 
+        
     }
-
     //TODO  on scroll, dim the narquee and light up the nav bar.
-</script
+</script>

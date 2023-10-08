@@ -1,7 +1,14 @@
 #weather-page {
-    background-color: black;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 3%, rgba(100,100,100,1) 97%);
+    overflow: hidden;
 
-    [purpose='page-wrap']{
+    [purpose='footer-nav'], [purpose='footer-copy']{
+        position: fixed;
+        bottom: 0vw;
+        z-index: 10;
+    }
+
+    [purpose='page-wrap'] {
     height: 100vh !important;
     }
     .navigation {
@@ -49,10 +56,17 @@
         transform: scaleX(1);
         transform-origin: bottom center;
     }
-
+    #weather-svg{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
     #weather{
+        display: none;
         height: 100vh;
-        overflow:none;
+        
         width: 100%;
 
         div{
@@ -88,18 +102,63 @@
         }
     } 
     #widget {
+        font-family: helvetica;
+        color: #FFFEF9;
+        opacity: 0;
+        position:absolute;
+
+        #clock{
+            position: absolute;
+            top: 6vw;
+            left: 64vw;
+            font-size: 14vw;
+        }
+
+        .day-line{
+            display:flex;
+            font-size:1.4vw;
+        }
+        .day{
+            width: 8.5vw;
+        }
+        .high-low{
+            width: 6vw;
+        }
+
         .card {
             text-align: center;
             background-color: transparent;
-            font-size: 9vw;
+            font-size: 14vw;
             padding: 2vw;
-            position: fixed;
+            position: absolute;
             top: 7vw;
-            left: 5vw;
-            font-family: helvetica;
-            color: @off-white;
+            left: 1vw;
             line-height: normal;
         }
-    }  
-
-}
+        #weather-icon{
+            font-size: 13vw;
+            position: absolute;
+            left: 26vw;
+            top: 10.5vw;
+        }
+        #city-name{
+            position: fixed;
+            top: 5vw;
+            width: 100%;
+            font-weight: 800;
+            font-size: 3vw;
+            text-align: center;   
+        }
+        #update-weather{
+            position: fixed; 
+            bottom: 2vw;
+            left: 2vw;
+            z-index:10;
+            display: none;
+        }
+        #forecast { position: absolute;
+        top: 10vw;
+        left: 43vw;
+        }
+    }
+}  
