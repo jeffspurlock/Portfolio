@@ -2,7 +2,11 @@
   // In case we're displaying the 404 or 500 page and relevant code in the "custom" hook was not able to run,
   // we make sure `me` exists.  This ensures we don't have to do `typeof` checks below.
   var me = undefined;
-} %><!DOCTYPE html>
+} %>
+<% if(pageName == 'undefined'){
+  var pageName = "general";
+} %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>NEW_APP_NAME</title>
@@ -37,6 +41,7 @@
     */ %>
 
     <% /* Auto-injected «link» tags: */ %>
+    
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
     <link rel="stylesheet" href="/dependencies/fontawesome.css">
@@ -56,14 +61,15 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownFunButton">
               <a class="nav-link" href="/fun/weather">weather</a>
-              <a class="nav-link" href="/fun/graffiti">graffiti</a>
+              <% /* %><a class="nav-link" href="/fun/graffiti">graffiti</a><% */ %>
             </div>
           </div>
           <a class="nav-link" href="/me">me</a>
         </div>
-        <div class="right-nav">
+        <% /* %><div class="right-nav">
           <a class="nav-link" href="/login">clients</a>
         </div>
+        <% */ %>
       </header>
 
       <%- body %>
