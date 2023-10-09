@@ -13,10 +13,8 @@ module.exports = {
 
 
   fn: async function (req, res) {
-    var sails = require('sails'); 
     return{ 
-      pageName: "weather", 
-      sails: sails 
+      pageName: "weather"
     };
   }
 };

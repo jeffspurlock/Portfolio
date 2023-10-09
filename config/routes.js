@@ -15,6 +15,8 @@ module.exports.routes = {
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /':                   { action: 'view-homepage-or-redirect' },
   'GET /fun/weather':        { action: 'fun/view-weather'},
+  'GET /fun/graffiti':       { action: 'fun/view-graffiti'},
+  'GET /me':                 { action: 'view-me'},
   'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
 
   'GET /faq':                { action:   'view-faq' },

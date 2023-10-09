@@ -1,11 +1,18 @@
-#homepage-page {
+#homepage-page, #me-page {
   background-color: @off-white;
+
+  [purpose='footer-nav'], [purpose='footer-copy']{
+    position: inline;
+    z-index: 10;
+}
+
   .navigation{
     position:fixed;
     top:0;
     left: 0;
     width: 100%;
     z-index: 11;
+    background-color: @off-white;
   }
 
   .nav-link{
