@@ -389,7 +389,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    //baseUrl: 'axonstudios.dev',
+    baseUrl: 'https://axonstudios.dev',
     internalEmailAddress: 'jeff@axonstudios.dev',
 
     // sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU',
