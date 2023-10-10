@@ -15,6 +15,37 @@ html, body {
   margin: 0;
   font-family: 'Josefin Slab', serif;
 }
+
+.nav-link{
+  color: @brown;
+  font-size: 1.75rem;
+  display: inline-block;
+  position: relative;
+  margin: 4px;
+}
+
+.nav-link:hover{
+  color: @navy;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  background-color: @navy;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+
 #mobile-nav {
   display: none;
 }

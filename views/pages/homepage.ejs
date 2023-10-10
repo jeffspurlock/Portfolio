@@ -1,6 +1,7 @@
 <div id="homepage" v-cloak>
   <div  id="gradient"></div>
   <div class="section">
+    <div id="cover"></div>
     <div id="brand-wrapper" class="float">
       <h1 class="pin" id="brand">Axon</h1>
       
@@ -26,58 +27,28 @@
 </div>
 
 <script type="text/javascript">
-    var rectangleNavy = document.getElementById("rectangle-navy");
-    var rectangleSlate = document.getElementById("rectangle-slate");
-    var rectangleMustard = document.getElementById("rectangle-mustard");
-    var name = document.getElementById("brand");
-
-    var rNavyLeftInitial = 26;
-    var rSlateLeftInitial = 50;
-    var rMustardLeftInitial = 45;
-    var rNavyTopInitial = 16;
-    var rSlateTopInitial = -6;
-    var rMustardTopInitial = -9;
-    var nameLeftInitial = -22;
-    var nameTopInitial = 8;
-
-    var rNavyLeftEnd = -30;
-    var rNavyTopEnd = 0;
-    var rSlateLeftEnd = 120;
-    var rSlateTopEnd = 40;
-    var rMustardLeftEnd = 56;
-    var rMustardTopEnd = -75;
-    var nameLeftEnd = 0;
-    var nameTopEnd = 0;
-
-    var nameFontInitial = 7;
-    var nameFontEnd = 3;
-
-
-    document.addEventListener('wheel', (event) => {
-      var total = 200;
-      var current = window.scrollY;
-      var percent = (current / total);
-      if (current >= total){
-        percent = 1;
-      }
-
-      document.getElementById("rectangle-navy").style.left = (rNavyLeftEnd - rNavyLeftInitial) * percent + rNavyLeftInitial +"vw";
-      document.getElementById("rectangle-navy").style.top = (rNavyTopEnd - rNavyTopInitial) * percent + rNavyTopInitial +"vw";
-      document.getElementById("rectangle-slate").style.left = (rSlateLeftEnd - rSlateLeftInitial) * percent + rSlateLeftInitial +"vw";
-      document.getElementById("rectangle-slate").style.top = (rSlateTopEnd - rSlateTopInitial) * percent + rSlateTopInitial +"vw";
-      document.getElementById("rectangle-mustard").style.left = (rMustardLeftEnd - rMustardLeftInitial) * percent + rMustardLeftInitial +"vw";
-      document.getElementById("rectangle-mustard").style.top = (rMustardTopEnd - rMustardTopInitial) * percent + rMustardTopInitial +"vw";
-      document.getElementById("brand").style.left = (nameLeftEnd - nameLeftInitial) * percent + nameLeftInitial + "vw";
-      document.getElementById("brand").style.top = (nameTopEnd - nameTopInitial) * percent + nameTopInitial +"vw";
-      document.getElementById("brand").style.fontSize = (nameFontEnd - nameFontInitial) * percent + nameFontInitial +"vw";
+    window.onload = ()=>{
+      var navyEnd = { left: -30, top: 0 };
+      var slateEnd = { left: 120, top: 40 };
+      var mustardEnd = { left: 56, top: -75 };
+      var nameEnd = { left: 0, top: 0};
+      var rectangleNavy = document.getElementById("rectangle-navy");
+      var rectangleSlate = document.getElementById("rectangle-slate");
+      var rectangleMustard = document.getElementById("rectangle-mustard");
+      var name = document.getElementById("brand");
+      
+      const navy = getObject(rectangleNavy, navyEnd);
+      console.log(navy);
+      disableScroll();
+      fadeOut(document.getElementById("cover"), 2000, 1);
+      setTimeout(()=>{ document.getElementById("cover").style.display = "none"}, 3000);
+      setTimeout(enableScroll(), 3000);
+      document.addEventListener('wheel', animate.bind(null,event,navy));
+     }
     
-      if(percent == 1){
-        document.getElementById("gradient").style.display = "inline";
-      }
-      if(percent < 1){
-        document.getElementById("gradient").style.display = "none";
-      }
-    });
+   
+    
+    
 
 </script> 
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
