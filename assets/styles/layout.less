@@ -15,6 +15,9 @@ html, body {
   margin: 0;
   font-family: 'Josefin Slab', serif;
 }
+#mobile-nav {
+  display: none;
+}
 [purpose='page-wrap'] {
   height: 100%;
   /* lesshint-disable */height: auto !important;/* lesshint-enable */
@@ -64,6 +67,48 @@ body.detected-mobile {
 }
 
 @media (max-width: 800px) {
+  #mobile-nav{
+    position: fixed;
+    top: 6vw;
+    left: 6vw;
+    display: block;
+    font-size: 7vw;
+    z-index: 11;
+
+    #menu-button {
+      background-color: transparent;
+    }
+
+    .dropdown-menu{
+      font-size: 7vw;
+    }
+
+    #menu-box{
+      backdrop-filter: blur(10px);
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      
+    }
+
+    .dropdown button{
+      
+      color: @brown;
+      border: none;
+    }
+
+    .dropdown button.dropdown-item{
+      width: 100%;
+    }
+
+    .dropdown-toggle::after{
+      display: none;
+    }
+
+  }
+ #desktop-nav{
+    display:none;
+  }
   [purpose='page-wrap'] {
     padding-bottom: 75px;
     [purpose='page-footer'] {
