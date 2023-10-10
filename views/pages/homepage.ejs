@@ -27,23 +27,13 @@
 </div>
 
 <script type="text/javascript">
-    window.onload = ()=>{
-      var navyEnd = { left: -30, top: 0 };
-      var slateEnd = { left: 120, top: 40 };
-      var mustardEnd = { left: 56, top: -75 };
-      var nameEnd = { left: 0, top: 0};
-      var rectangleNavy = document.getElementById("rectangle-navy");
-      var rectangleSlate = document.getElementById("rectangle-slate");
-      var rectangleMustard = document.getElementById("rectangle-mustard");
-      var name = document.getElementById("brand");
-      
-      const navy = getObject(rectangleNavy, navyEnd);
-      console.log(navy);
+    window.onload = ()=>{ 
       disableScroll();
       fadeOut(document.getElementById("cover"), 2000, 1);
       setTimeout(()=>{ document.getElementById("cover").style.display = "none"}, 3000);
       setTimeout(enableScroll(), 3000);
-      document.addEventListener('wheel', animate.bind(null,event,navy));
+      var package = getObjectsDesktop();
+      document.addEventListener('wheel', animate.bind(null,event,package));
      }
     
    
