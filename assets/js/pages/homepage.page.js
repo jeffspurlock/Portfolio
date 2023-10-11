@@ -39,4 +39,5 @@ parasails.registerPage('homepage', {
     },
 
   }
-});
+}
+);

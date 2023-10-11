@@ -51,8 +51,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
   </head>
   <body id="<%- pageName %>-page">
-    <div purpose="page-wrap">
-      <header class="navigation">
+    <div id="page-wrap" purpose="page-wrap">
+      <header id="desktop-nav" class="navigation">
         <div class="left-nav">
           <a class="nav-link" href="/">home</a> 
           <div class="nav-link dropdown">
@@ -71,16 +71,31 @@
         </div>
         <% */ %>
       </header>
+      <header id="mobile-nav">
+        <div id="menu-dropdown">
+          <button id="menu-button">
+            menu
+          </button>
+          <div id="menu-box">
+            <a class="mobile-mainlevel" href="/">home</a>
+            <div clas="mobile-mainlevel">fun</div>
+            <ul class="list-override">
+                <li><a class="mobile-secondlevel" href="/fun/weather">weather</a></li>
+            </ul>
+            <a class="mobile-mainlevel" href="/me">me</a>
+          </div>
+        </div>
+      </header>
 
       <%- body %>
 
       <footer class="navbar navbar-light justify-content-between flex-row-reverse" purpose="page-footer">
         <div class="nav" purpose="footer-nav">
-          <small class="nav-item d-inline-block"><a class="nav-link text-info px-1 px-sm-3" href="/contact">Contact<span class="d-none d-sm-inline"> us</span></a></small>
-          <small class="nav-item d-inline-block"><a class="nav-link text-info px-1 px-sm-3" href="/legal/terms">Terms<span class="d-none d-sm-inline"> of use</span></a></small>
-          <small class="nav-item d-inline-block"><a class="nav-link text-info px-1 px-sm-3" href="/legal/privacy">Privacy<span class="d-none d-sm-inline"> policy</span></a></small>
+          <small class="nav-item d-inline-block"><a class="nav-link px-1 px-sm-3" href="/contact">Contact<span class="d-none d-sm-inline"> us</span></a></small>
+          <small class="nav-item d-inline-block"><a class="nav-link px-1 px-sm-3" href="/legal/terms">Terms<span class="d-none d-sm-inline"> of use</span></a></small>
+          <small class="nav-item d-inline-block"><a class="nav-link px-1 px-sm-3" href="/legal/privacy">Privacy<span class="d-none d-sm-inline"> policy</span></a></small>
           <% if(me) { %>
-          <small class="nav-item d-inline-block"><a class="nav-link text-info px-1 px-sm-3" href="/logout">Sign out</a></small>
+          <small class="nav-item d-inline-block"><a class="nav-link px-1 px-sm-3" href="/logout">Sign out</a></small>
           <% } %>
         </div>
         <small purpose="footer-copy">Copyright &copy; <%= sails.config.custom.platformCopyrightYear %> <a target="_blank" href="/me">Axon Studios</a>. <br class="d-block d-sm-none"/>All rights reserved.</small>
@@ -147,7 +162,35 @@
     <script src="/js/pages/legal/privacy.page.js"></script>
     <script src="/js/pages/legal/terms.page.js"></script>
     <!--SCRIPTS END-->
+    <script>
+      $(document).ready(function() {
+        $('.dropright button').on("click", function(e) {
+          e.stopPropagation();
+          e.preventDefault();
 
+    if (!$(this).next('div').hasClass('show')) {
+      $(this).next('div').addClass('show');
+    } else {
+      $(this).next('div').removeClass('show');
+    }
+
+  });
+});
+    </script>
+    <script>
+    //mobile nav behavior
+      document.getElementById("menu-button").addEventListener("click", () =>{ 
+        document.getElementById("menu-button").style.display = "none";
+        document.getElementById("menu-box").style.display = "block";
+        document.getElementById("menu-box").style.position = "fixed";
+        disableScroll();
+      });
+      document.getElementById("menu-box").addEventListener("click", () => {
+        document.getElementById("menu-button").style.display = "block";
+        document.getElementById("menu-box").style.display = "none";
+        enableScroll();
+      })
+    </script>
     <% /* Display an overlay if the current browser is not supported.
     (Relies on `bowser`, which is loaded inline above.) */ %>
     <script>
