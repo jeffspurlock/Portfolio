@@ -1,16 +1,13 @@
-function getLocation() {
+function getLocation(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             console.log(position);
             getWeather(position.coords.latitude, position.coords.longitude);
             reverseGeocode(position.coords.latitude, position.coords.longitude);
-            //getElevation(position.coords.latitude, position.coords.longitude);
         }); 
       } else {
         getWeather("41.2638", "-95.9658");
         reverseGeocode("41.2638", "-95.9658");
-        //getElevation("41.2638", "-95.9658");
-
       }
 }
 
@@ -18,25 +15,6 @@ function getLocation() {
 //API Calls//
 /////////////
 
-function getElevation(lat,lon){
-    let apiAddress = "https://api.opentopodata.org/v1/aster30m?locations="+lat+","+lon;
-    fetch(apiAddress)
-    .then(response =>{
-        if(response.ok) {
-            console.log(response);
-            return response.json();
-        } else {
-            throw new Error("Elevation API failure.");
-        }
-    })
-    .then(data => {
-        displayElevation(data);
-        console.log(response);
-    })
-    .catch (error => {
-        console.error(error);
-    });
-}
 
 function getWeather(lat, lon){
     let apiAddress = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=12be7f0750ce44d51d675415558fedc5";
@@ -69,6 +47,7 @@ function reverseGeocode(lat, lon){
         } 
     }) 
     .then(data => { 
+        console.log(data);
         console.log(data.results[0].formatted_address);
         displayCity(data.results[0].formatted_address);
     }) 
@@ -145,3 +124,4 @@ function displayElevation(elevation){
     console.log(elevation.result.elevation);
     document.getElementById("elevation").innerHTML = (Math.round(elevation.result.elevation)*3.28084) + "ft";
 }
+
