@@ -51,13 +51,12 @@ function getObjects(layout) {
         return { rectangle: element, left: left, top: top, leftEnd: endCoords.left, topEnd: endCoords.top }
     }
 
-    var package = { rectPackage: rectPackage, brand: brand };
-    console.log(package);
-    return package;
+    var positionPackage = { rectPackage: rectPackage, brand: brand };
+    return positionPackage;
 };
     
 
-async function animate(event, package){
+async function animate(event, positionPackage){
     console.log("animnate fired")
     var total = 200;
     var current = window.scrollY;
@@ -66,14 +65,14 @@ async function animate(event, package){
       percent = 1;
     }
    
-    package.rectPackage.forEach(item =>{
+    positionPackage.rectPackage.forEach(item =>{
      item.rectangle.style.left = (item.leftEnd - item.left) * percent + item.left + "vw";
      item.rectangle.style.top = (item.topEnd - item.top) * percent + item.top + "vw";
    })
     
-    package.brand.element.style.left = (package.brand.leftEnd - package.brand.left) * percent + package.brand.left + "vw";
-    package.brand.element.style.top = (package.brand.topEnd - package.brand.top) * percent + package.brand.top + "vw";
-    package.brand.element.style.fontSize = (package.brand.fontEnd - package.brand.font) * percent + package.brand.font + "vw";
+    positionPackage.brand.element.style.left = (positionPackage.brand.leftEnd - positionPackage.brand.left) * percent + positionPackage.brand.left + "vw";
+    positionPackage.brand.element.style.top = (positionPackage.brand.topEnd - positionPackage.brand.top) * percent + positionPackage.brand.top + "vw";
+    positionPackage.brand.element.style.fontSize = (positionPackage.brand.fontEnd - positionPackage.brand.font) * percent + positionPackage.brand.font + "vw";
   
     if(percent == 1){
       document.getElementById("gradient").style.display = "inline";

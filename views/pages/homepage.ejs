@@ -35,9 +35,9 @@
       } else {
         layout="mobile"
       }
-        var package = getObjects(layout);
-        document.addEventListener('wheel', animate.bind(null,event,package));
-        document.addEventListener("touchmove", animate.bind(null, event, package));
+        var positionPackage = getObjects(layout);
+        document.addEventListener('wheel', animate.bind(null,event,positionPackage));
+        document.addEventListener("touchmove", animate.bind(null, event, positionPackage));
       }
     
 </script> 
