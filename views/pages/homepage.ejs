@@ -32,7 +32,7 @@
       fadeOut(document.getElementById("cover"), 2000, 1);
       setTimeout(()=>{ document.getElementById("cover").style.display = "none"}, 3000);
       setTimeout(enableScroll(), 3000);
-      var package = getObjectsDesktop();
+      var package = getObjects("desktop");
       document.addEventListener('wheel', animate.bind(null,event,package));
      }
     
