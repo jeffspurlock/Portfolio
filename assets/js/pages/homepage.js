@@ -8,7 +8,7 @@ function getObjects(layout) {
         var navyEnd = { left: -30, top: 0 };
         var slateEnd = { left: 120, top: 40 };
         var mustardEnd = { left: 56, top: -75 };
-        var brandEnd = { left: 0, top: 0, font: "3" };
+        var brandEnd = { left: 0, top: 3, font: "7" };
     };
     var rectangleNavy = document.getElementById("rectangle-navy");
     var rectangleSlate = document.getElementById("rectangle-slate");
@@ -58,6 +58,7 @@ function getObjects(layout) {
     
 
 async function animate(event, package){
+    console.log("animnate fired")
     var total = 200;
     var current = window.scrollY;
     var percent = (current / total);

@@ -84,7 +84,11 @@ html, body {
 }
 .dropdown-menu {
   background-color: transparent;
-  border: none;
+  
+  
+}
+.dropdown-menu a, .dropdown-menu button{
+  z-index: 100;
 }
 
 
@@ -108,7 +112,24 @@ body.detected-mobile {
 
     #menu-button {
       background-color: transparent;
+      border: none;
     }
+
+    .mobile-mainlevel, .mobile-secondlevel{
+      color: @brown;
+      text-decoration: none;
+    }
+
+    ul {
+      margin-bottom: 0em;
+    }
+    li > a:not(.btn) {
+      border-bottom: none;
+    }
+    .list-override li::marker {
+      color: transparent;
+    }
+    
 
     .dropdown-menu{
       font-size: 7vw;
@@ -119,7 +140,7 @@ body.detected-mobile {
       width: 100vw;
       height: 100vh;
       position: fixed;
-      
+      display: none;
     }
 
     .dropdown button{

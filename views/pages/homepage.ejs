@@ -1,7 +1,7 @@
 <div id="homepage" v-cloak>
   <div  id="gradient"></div>
   <div class="section">
-    <div id="cover"></div>
+    <% /* <div id="cover"></div> */ %>
     <div id="brand-wrapper" class="float">
       <h1 class="pin" id="brand">Axon</h1>
       
@@ -29,16 +29,16 @@
 <script type="text/javascript">
     window.onload = ()=>{ 
       disableScroll();
-      fadeOut(document.getElementById("cover"), 2000, 1);
-      setTimeout(()=>{ document.getElementById("cover").style.display = "none"}, 3000);
       setTimeout(enableScroll(), 3000);
-      var package = getObjects("desktop");
-      document.addEventListener('wheel', animate.bind(null,event,package));
-     }
+      if($(window).width > 800){
+        layout="desktop"
+      } else {
+        layout="mobile"
+      }
+        var package = getObjects(layout);
+        document.addEventListener('wheel', animate.bind(null,event,package));
+        document.addEventListener("touchmove", animate.bind(null, event, package));
+      }
     
-   
-    
-    
-
 </script> 
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
