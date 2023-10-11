@@ -2,9 +2,18 @@
     background: @off-white;
     overflow: hidden;
 
-    [purpose='footer-nav'], [purpose='footer-copy']{
+    [purpose='footer-nav']{
         position: fixed;
-        bottom: 0vw;
+        bottom: 8vw;
+        z-index: 10;
+        small { 
+            color: @brown;
+        }
+    }
+
+    [purpose='footer-copy']{
+        position: fixed;
+        bottom:0vw;
         z-index: 10;
     }
 
@@ -105,6 +114,59 @@
             width: 41vw;
             height: 21vw;
             z-index: 15;
+        }
+    }
+    @media (max-width: 800px){
+        #weather-svg{
+            top:20vw;
+            height: 30%;
+        }
+        
+        #widget{
+            top: 40vw;
+
+            #forecast{
+                top: 21vw;
+                left: 44vw;
+
+                .day-line{
+                    font-size: 2.9vw;
+                    .day{
+                        width: 22vw;
+                    }
+                    .high-low{
+                        width: 14vw;
+                    }
+                }
+            }
+
+            #map{
+                left: 0;
+                width: 100vw;
+                height: 95vw;
+                top: 56vw;
+            }
+
+            #weather-icon{
+                left: 14vw;
+                top: 36vw;
+            }
+
+            .card-w{
+                top: 17vw;
+                left: 11vw;
+            }
+            #clock{
+                position: fixed;
+                width: 100%;
+                text-align: center;
+                top: 38vw;
+                left: 0;
+            }
+            #city-name{
+                top:25vw;
+                font-size: 10vw;
+            }
         }
     }
 }  
