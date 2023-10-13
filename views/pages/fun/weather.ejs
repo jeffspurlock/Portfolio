@@ -1,24 +1,8 @@
-<div id="weather">
-    <div id="white">
-        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
-    </div>
-    <div id="grey10">
-        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
-    </div>
-    <div id="grey20">
-        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
-    </div>
-    <div id="grey30">
-        <marquee loop="1" width="120%" scrollDelay="5" truespeed>WEATHER</marquee>
-    </div>
-</div>
+
     <div id="weather-2">
         <?xml version="1.0" encoding="utf-8"?>
     <svg version="1.1" id="weather-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 1920 400" style="enable-background:new 0 0 1920 400;" preserveAspectRatio="none" xml:space="preserve">
-    <style type="text/css">
-        .st0{fill:#FFFFFF;}
-    </style>
     <g>
         <g>
             <path class="st0" d="M310.8,50.5h58.2l-77.1,273.9h-54.6l-33.1-160.2l-9.7-53l-9.7,53l-33.1,160.2H98.5L20.9,50.5h60.8l36.2,156.9
@@ -53,7 +37,7 @@
 </div>
 <div id="widget">
     <h2 id="city-name"></h2>
-    <div class="card">
+    <div class="card-w">
         <div><span id="current-temp"></span>&#176;</div>
     </div>
     <i id="weather-icon"></i>
@@ -72,15 +56,22 @@
                     <span><span id="high-<%- i %>"></span>&#176;</span>
                 </div>
             </div>
-        <% i+=1; }%>
+        <% i+=1; }%> 
     </div>
     <div id="clock"></div>
+    <div id="map"></div>
 </div>
+<script>
+    (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+      key: "AIzaSyCYz0qOqUFkYeQvBFSNrJXJuIlvZNY5S5k",
+      v: "weekly",
+    });
+  </script>
 
 <script type="text/javascript">
     window.addEventListener('load', loadTasks)
     function loadTasks() {
-        getLocation();
+        setTimeout(getLocation, 500);
         setTimeout(function(){
             var time = 0;
             var repeat = setInterval(function() {
@@ -104,9 +95,32 @@
         }, 4000)
         startTime();
     }
-    function updateWeather(){
-        getLocation(); 
-        
-    }
-    //TODO  on scroll, dim the narquee and light up the nav bar.
+</script>
+<script>
+    window.addEventListener("load", ()=>{
+    let map;
+    async function initMap() {
+        navigator.geolocation.getCurrentPosition(async function(userPosition) {
+            console.log(userPosition);
+            console.log("from initmap");
+            const position = { lat: userPosition.coords.latitude, lng: userPosition.coords.longitude };
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+            map = new Map(document.getElementById("map"), {
+                zoom: 15,
+                center: position,
+                mapId: "333dac8f8bcd0554",
+            });
+            const marker = new AdvancedMarkerElement({
+                map: map,
+                position: position,
+                title: "User Position",
+            });
+        });
+        }
+
+
+    initMap();
+    })
 </script>

@@ -20,7 +20,7 @@
     .title{
         width: 100%;
         text-align: center;
-        margin-top: 6vw;
+        padding-top: 6vw;
     }
 
     .social a{
@@ -44,5 +44,24 @@
     
     .column-wrapper ul li span{
         font-size:smaller;
+    }
+    @media (max-width: 800px){
+        #gradient{
+            height: 33vw;
+        }
+        .columns{
+            display: inline;
+        }
+        .column-wrapper{
+            width: 75%;
+            margin: 30px auto;
+        }
+        #page-wrapper{
+            .title {
+                margin: 22vw auto 0vw;
+                h1 { font-size: 7vw; }
+                h2 { font-size: 5vw; }
+            }
+        }
     }
 }

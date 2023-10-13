@@ -15,11 +15,50 @@ html, body {
   margin: 0;
   font-family: 'Josefin Slab', serif;
 }
+
+#desktop-nav {
+  position: fixed;
+  z-index: 100;
+}
+
+.nav-link{
+  color: @brown;
+  font-size: 1.75rem;
+  display: inline-block;
+  position: relative;
+  margin: 4px;
+}
+
+.nav-link:hover{
+  color: @navy;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  background-color: @navy;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+
+#mobile-nav {
+  display: none;
+}
 [purpose='page-wrap'] {
   height: 100%;
   /* lesshint-disable */height: auto !important;/* lesshint-enable */
   // ^^The above is to disable "importantRule" and "duplicateProperty" rules.
-  min-height: 100%;
+  min-height: 95%;
   position: relative;
   padding-bottom: @footer-height;
 }
@@ -50,7 +89,11 @@ html, body {
 }
 .dropdown-menu {
   background-color: transparent;
-  border: none;
+  
+  
+}
+.dropdown-menu a, .dropdown-menu button{
+  z-index: 100;
 }
 
 
@@ -64,6 +107,65 @@ body.detected-mobile {
 }
 
 @media (max-width: 800px) {
+  #mobile-nav{
+    position: fixed;
+    top: 6vw;
+    left: 6vw;
+    display: block;
+    font-size: 7vw;
+    z-index: 11;
+
+    #menu-button {
+      background-color: transparent;
+      border: none;
+    }
+
+    .mobile-mainlevel, .mobile-secondlevel{
+      color: @brown;
+      text-decoration: none;
+    }
+
+    ul {
+      margin-bottom: 0em;
+    }
+    li > a:not(.btn) {
+      border-bottom: none;
+    }
+    .list-override li::marker {
+      color: transparent;
+    }
+    
+
+    .dropdown-menu{
+      font-size: 7vw;
+    }
+
+    #menu-box{
+      backdrop-filter: blur(10px);
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      display: none;
+    }
+
+    .dropdown button{
+      
+      color: @brown;
+      border: none;
+    }
+
+    .dropdown button.dropdown-item{
+      width: 100%;
+    }
+
+    .dropdown-toggle::after{
+      display: none;
+    }
+
+  }
+ #desktop-nav{
+    display:none;
+  }
   [purpose='page-wrap'] {
     padding-bottom: 75px;
     [purpose='page-footer'] {
