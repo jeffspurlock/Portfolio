@@ -29,7 +29,6 @@ function getObjects(layout) {
     ];
     var rectPackage = [];
     collection.forEach(rectangle => {
-        console.log(rectangle.element);
         rectPackage.push(packageUp(rectangle.element, rectangle.endCoord));
     })
 
@@ -45,7 +44,6 @@ function getObjects(layout) {
     }
 
     function packageUp(element, endCoords) {
-        console.log(element);
         const left = $(element).css("left").substring(0, $(element).css("left").length - 2)*100/($(window).width());
         const top = $(element).css("top").substring(0, $(element).css("top").length - 2)*100/($(window).width());
         return { rectangle: element, left: left, top: top, leftEnd: endCoords.left, topEnd: endCoords.top }
@@ -57,14 +55,13 @@ function getObjects(layout) {
     
 
 async function animate(event, positionPackage){
-    console.log("animnate fired")
+    
     var total = 200;
     var current = window.scrollY;
     var percent = (current / total);
     if (current >= total){
       percent = 1;
     }
-   
     positionPackage.rectPackage.forEach(item =>{
      item.rectangle.style.left = (item.leftEnd - item.left) * percent + item.left + "vw";
      item.rectangle.style.top = (item.topEnd - item.top) * percent + item.top + "vw";

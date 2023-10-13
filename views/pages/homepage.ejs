@@ -18,10 +18,13 @@
   <div class="section">
     <div class="text-block" id="skill-set">
       <h2>What I Do</h2>
-      <p>Full Stack Webdevelopment</p>
+      <p>Full Stack Web Development</p>
       <p>Shopify Development</p>
-      <p>Full Funnel eCommerce Advertisings</p>
+      <p>ADA Compliance</p>
+      <p>Privacy Compliance</p>
+      <p>DNS Management</p>
       <p>API Development</p>
+      <p>Full Funnel eCommerce Advertisings</p>
     </div>
   </div>
 </div>
@@ -30,14 +33,14 @@
     window.onload = ()=>{ 
       disableScroll();
       setTimeout(enableScroll(), 3000);
-      if($(window).width > 800){
-        layout="desktop"
+      if(window.innerWidth > 800){
+        var layout="desktop";
       } else {
-        layout="mobile"
-      }
+        var layout="mobile";
+      };
         var positionPackage = getObjects(layout);
-        document.addEventListener('wheel', animate.bind(null,event,positionPackage));
-        document.addEventListener("touchmove", animate.bind(null, event, positionPackage));
+          document.addEventListener('wheel', animate.bind(null,event,positionPackage));
+          document.addEventListener("touchmove", animate.bind(null, event, positionPackage));
       }
     
 </script> 
