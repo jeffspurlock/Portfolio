@@ -1,5 +1,19 @@
-#homepage-page, #me-page {
+#homepage-page {
   background-color: @off-white;
+  #page-wrap{ 
+    #desktop-nav{ 
+      #brand {
+      top: 8vw;
+      left:-22vw;
+      font-size: 7vw;
+      z-index: 20;
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+  }
+}
 
   [purpose='footer-nav'], [purpose='footer-copy']{
     position: inline;
@@ -26,16 +40,6 @@
     }
     .section{
       height: 100vh;
-    }
-
-    #gradient{
-      background: rgb(255,254,249);
-      background: linear-gradient(180deg, rgba(255,254,249,1) 55%, rgba(255,254,249,0) 100%);
-      width: 100%;
-      height: 10vw;
-      position: fixed;
-      top: 0;
-      display: none;
     }
 
     #rectangle-navy{
@@ -71,6 +75,7 @@
       //top:10vw;
       //left:10vw;  
     }
+    
     #brand{
       top: 8vw;
       left:-22vw;
@@ -80,6 +85,7 @@
       width: 100%;
       text-align: center;
       padding: 20px;
+      pointer-events: none;
     }
 
     .text-block{
