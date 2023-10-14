@@ -16,9 +16,21 @@ html, body {
   font-family: 'Josefin Slab', serif;
 }
 
+#brand {
+  top: 8vw;
+      width:100%;
+      left:0;
+      font-size: 3vw;
+      z-index: 20;
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+}
+
 #desktop-nav {
   position: fixed;
-  z-index: 100;
+  z-index: 20;
 }
 
 .nav-link{
@@ -71,12 +83,22 @@ html, body {
   left: 0px;
   bottom: 0px;
 }
+#gradient{
+  background: rgb(255,254,249);
+  background: linear-gradient(180deg, rgba(255,254,249,1) 55%, rgba(255,254,249,0) 100%);
+  width: 100%;
+  height: 10vw;
+  position: fixed;
+  top: 0;
+  display: none;
+}
 
 .navigation{
   display: flex;
 }
 .left-nav{
   display:flex;
+  z-index: 1;
 }
 .right-nav{
   position: absolute;
@@ -97,14 +119,14 @@ html, body {
 }
 
 
-body.detected-mobile {
+/*(body.detected-mobile {
   // Above and beyond the media queries below, this selector (which relies on
   // `parasails` automatically attaching this class, if appropriate) contains
   // styles intended to be activated specifically when loaded from a recognized
   // mobile device, regardless of viewport dimensions.  This includes tablet
   // devices (like the iPad) as well as handset devices (like the iPhone).
   // …
-}
+}*/
 
 @media (max-width: 800px) {
   #mobile-nav{
